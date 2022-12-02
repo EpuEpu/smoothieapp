@@ -25,21 +25,23 @@ public class SmoothieRestController {
     }
 
     @GetMapping(value="/{smoothieid}")
-    public @ResponseBody
-    Smoothie getSmoothieDetails(@PathVariable Long smoothieid) {
+    public @ResponseBody Smoothie getSmoothieDetails(@PathVariable Long smoothieid) {
         return smoothieService.getSmothieDetails(smoothieid);
     }
 
     @PutMapping(value="/{smoothieid}/edit")
-    public @ResponseBody
-    Smoothie editSmoothieDetails(Smoothie smoothie) {
+    public @ResponseBody Smoothie editSmoothieDetails(Smoothie smoothie) {
         return smoothieService.editSmothieDetails(smoothie);
     }
 
     @PostMapping
-    public @ResponseBody
-    Smoothie createSmoothie(@RequestBody Smoothie smoothie) {
+    public @ResponseBody Smoothie createSmoothie(@RequestBody Smoothie smoothie) {
         return smoothieService.createSmoothie(smoothie);
+    }
+
+    @DeleteMapping(value="/{smoothieid}")
+    public void deleteSmoothie(@PathVariable Long smoothieid) {
+        smoothieService.deleteSmoothie(smoothieid);
     }
 
 }

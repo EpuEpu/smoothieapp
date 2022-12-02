@@ -5,20 +5,24 @@ import com.epuepu.smoothieapp.enums.SmoothieSize;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "smoothie")
 public class Smoothie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Ingredient> ingredientList = new java.util.ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "smoothie_ingredient",
+            joinColumns = { @JoinColumn(name = "fk_ingredient") },
+            inverseJoinColumns = { @JoinColumn(name = "fk_smoothie") })
+    private Set<Ingredient> ingredientList;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "base_ID")
     private SmoothieBase base;
 
@@ -36,11 +40,11 @@ public class Smoothie {
         this.id = id;
     }
 
-    public List<Ingredient> getIngredientList() {
+    public Set<Ingredient> getIngredientList() {
         return ingredientList;
     }
 
-    public void setIngredientList(List<Ingredient> ingredientList) {
+    public void setIngredientList(Set<Ingredient> ingredientList) {
         this.ingredientList = ingredientList;
     }
 

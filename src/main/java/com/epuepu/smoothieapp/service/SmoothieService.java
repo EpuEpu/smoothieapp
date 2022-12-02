@@ -44,4 +44,8 @@ public class SmoothieService {
     public Smoothie createSmoothie(Smoothie smoothie) {
         return smoothieRepository.save(smoothie);
     }
+
+    public void deleteSmoothie(Long smoothieid) {
+        smoothieRepository.deleteById(smoothieid);
+    }
 }
