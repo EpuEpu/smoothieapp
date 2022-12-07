@@ -4,7 +4,6 @@ import com.epuepu.smoothieapp.enums.SmoothieSize;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,15 +21,28 @@ public class Smoothie {
             inverseJoinColumns = { @JoinColumn(name = "fk_smoothie") })
     private Set<Ingredient> ingredientList;
 
+    @Column(name = "name", nullable = false)
+    private String name;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "base_ID")
     private SmoothieBase base;
 
     @Column(name = "size", nullable = false)
+    @Enumerated(EnumType.STRING)
     private SmoothieSize size;
 
     @Column(name = "value", nullable = false)
     private BigDecimal value;
+
+    @Column(name = "eggwhite", nullable = false)
+    private Double eggwhite;
+
+    @Column(name = "fat", nullable = false)
+    private Double fat;
+
+    @Column(name = "carbohydrates", nullable = false)
+    private Double carbohydrates;
 
     public Long getId() {
         return id;
@@ -46,6 +58,14 @@ public class Smoothie {
 
     public void setIngredientList(Set<Ingredient> ingredientList) {
         this.ingredientList = ingredientList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public SmoothieBase getBase() {
@@ -70,5 +90,29 @@ public class Smoothie {
 
     public void setValue(BigDecimal value) {
         this.value = value;
+    }
+
+    public Double getEggwhite() {
+        return eggwhite;
+    }
+
+    public void setEggwhite(Double eggwhite) {
+        this.eggwhite = eggwhite;
+    }
+
+    public Double getFat() {
+        return fat;
+    }
+
+    public void setFat(Double fat) {
+        this.fat = fat;
+    }
+
+    public Double getCarbohydrates() {
+        return carbohydrates;
+    }
+
+    public void setCarbohydrates(Double carbohydrates) {
+        this.carbohydrates = carbohydrates;
     }
 }

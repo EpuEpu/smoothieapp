@@ -14,8 +14,6 @@ public class SmoothieBase {
     @Column(name = "name", nullable = false)
     private String name;
 
-    //nutritionvalue
-
     public String getName() {
         return name;
     }

@@ -1,6 +1,5 @@
 package com.epuepu.smoothieapp.controller;
 
-import com.epuepu.smoothieapp.dto.SmoothieDTO;
 import com.epuepu.smoothieapp.model.Smoothie;
 import com.epuepu.smoothieapp.service.SmoothieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/smoothies")
+@RequestMapping(value = "/rest/smoothies")
 public class SmoothieRestController {
 
     SmoothieService smoothieService;
@@ -30,8 +29,8 @@ public class SmoothieRestController {
     }
 
     @PutMapping(value="/{smoothieid}/edit")
-    public @ResponseBody Smoothie editSmoothieDetails(Smoothie smoothie) {
-        return smoothieService.editSmothieDetails(smoothie);
+    public @ResponseBody Smoothie editSmoothieDetails(@PathVariable Long smoothieid, @RequestBody Smoothie smoothie) {
+        return smoothieService.editSmothieDetails(smoothieid, smoothie);
     }
 
     @PostMapping

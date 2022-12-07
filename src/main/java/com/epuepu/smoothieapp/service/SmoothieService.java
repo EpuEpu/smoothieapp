@@ -1,6 +1,5 @@
 package com.epuepu.smoothieapp.service;
 
-import com.epuepu.smoothieapp.dto.SmoothieDTO;
 import com.epuepu.smoothieapp.model.Smoothie;
 import com.epuepu.smoothieapp.repo.SmoothieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +16,16 @@ public class SmoothieService {
         this.smoothieRepository = smoothieRepository;
     }
 
-//    public List<SmoothieDTO> getSmothies() {
-//        return smoothieRepository.findAll();
-//    }
-//
-//    public SmoothieDTO getSmothieDetails(Long smoothieId) {
-//        return smoothieRepository.findById(smoothieId);
-//    }
-//
-//    public SmoothieDTO editSmothieDetails(SmoothieDTO smoothieDAO) {
-//        return new SmoothieDTO();
-//    }
 
     public List<Smoothie> getSmothies() {
-        return (List<Smoothie>) smoothieRepository.findAll();
+        return smoothieRepository.findAll();
     }
 
     public Smoothie getSmothieDetails(Long smoothieId) {
         return smoothieRepository.findById(smoothieId).get();
     }
 
-    public Smoothie editSmothieDetails(Smoothie smoothie) {
+    public Smoothie editSmothieDetails(Long smoothieId, Smoothie smoothie) {
         return smoothieRepository.save(smoothie);
     }
 
