@@ -13,6 +13,9 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Size</th>
+                <th>Eggwhite</th>
+                <th>Carbohydrates</th>
+                <th>Fats</th>
                 <th>Calories</th>
                 <th>Value</th>
                 <th></th>
@@ -20,20 +23,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="smoothie : ${smoothies}">
+            <tr>
                 <td th:text="${smoothie.id}">id</td>
                 <td th:text="${smoothie.name}">size</td>
                 <td th:text="${smoothie.size}">value</td>
+                <td th:text="${smoothie.eggwhite} + g">value</td>
+                <td th:text="${smoothie.carbohydrates} + g">value</td>
+                <td th:text="${smoothie.fat} + g">value</td>
                 <td th:text="${smoothie.calories}">value</td>
                 <td th:text="${smoothie.value}">value</td>
                 <td>
                     <a th:href="@{'/smoothies/'+${smoothie.id}}"
-                       class="btn btn-primary"> <span th:text="Details"></span>
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{'/smoothies/delete'}"
-                       class="btn btn-danger"> <span th:text="Delete"></span>
+                       class="btn btn-primary"> <span th:text="edit"></span>
                     </a>
                 </td>
             </tr>

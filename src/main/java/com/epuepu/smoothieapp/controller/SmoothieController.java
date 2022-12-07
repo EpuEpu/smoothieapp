@@ -14,8 +14,12 @@ import java.util.List;
 @RequestMapping(value = "/smoothies")
 public class SmoothieController {
 
-    @Autowired
     SmoothieService smoothieService;
+
+    @Autowired
+    public SmoothieController(SmoothieService smoothieService) {
+        this.smoothieService = smoothieService;
+    }
 
     @GetMapping
     public String showSmoothies(Model model) {
