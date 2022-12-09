@@ -33,7 +33,7 @@
                 <td th:text="${smoothie.calories}">value</td>
                 <td th:text="${smoothie.value}">value</td>
                 <td>
-                    <a th:href="@{'/smoothies/'+${smoothie.id}}"
+                    <a th:href="@{'/smoothies/edit/'+${smoothie.id}}"
                        class="btn btn-primary"> <span th:text="edit"></span>
                     </a>
                 </td>

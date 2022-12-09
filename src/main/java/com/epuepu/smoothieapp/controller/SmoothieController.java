@@ -35,7 +35,7 @@ public class SmoothieController {
         return "smoothieDetails";
     }
 
-    @PutMapping(value="/{smoothieid}/edit")
+    @PutMapping(value="/edit/{smoothieid}")
     public String editSmoothieDetails(Model model, @PathVariable Long smoothieid,
                                                       @RequestBody Smoothie smoothie) {
         smoothieService.editSmothieDetails(smoothieid, smoothie);
@@ -44,7 +44,7 @@ public class SmoothieController {
         return "smoothieDetails";
     }
 
-    @DeleteMapping(value="/{smoothieid}")
+    @GetMapping(value="/delete/{smoothieid}")
     public String deleteSmoothie(Model model, @PathVariable Long smoothieid) {
         smoothieService.deleteSmoothie(smoothieid);
         model.addAttribute("message", "success");
