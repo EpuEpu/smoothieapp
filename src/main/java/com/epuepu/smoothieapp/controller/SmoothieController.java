@@ -32,16 +32,24 @@ public class SmoothieController {
     public String getSmoothieDetails(Model model, @PathVariable Long smoothieid) {
         Smoothie smoothie = smoothieService.getSmothieDetails(smoothieid);
         model.addAttribute("smoothie", smoothie);
-        return "smoothieDetails";
+        return "smoothie";
+    }
+
+    @GetMapping(value="/edit/{smoothieid}")
+    public String showEditPage(Model model, @PathVariable Long smoothieid) {
+        Smoothie smoothie = smoothieService.getSmothieDetails(smoothieid);
+        model.addAttribute("smoothie", smoothie);
+//        model.addAttribute("message", "success");
+        return "edit";
     }
 
     @PutMapping(value="/edit/{smoothieid}")
     public String editSmoothieDetails(Model model, @PathVariable Long smoothieid,
-                                                      @RequestBody Smoothie smoothie) {
+                                      @RequestBody Smoothie smoothie) {
         smoothieService.editSmothieDetails(smoothieid, smoothie);
         model.addAttribute("smoothies", smoothie);
         model.addAttribute("message", "success");
-        return "smoothieDetails";
+        return "edit";
     }
 
     @GetMapping(value="/delete/{smoothieid}")

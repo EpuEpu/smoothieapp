@@ -16,7 +16,7 @@ public class Smoothie {
     @Column(name = "id")
     private Long id;
 
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinTable(name = "smoothie_ingredient",
 //            joinColumns = { @JoinColumn(name = "fk_ingredient") },
 //            inverseJoinColumns = { @JoinColumn(name = "fk_smoothie") })
